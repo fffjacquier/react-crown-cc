@@ -14,6 +14,7 @@ const Homepage = () => {
     <HomepageStyles>
       <nav>
         <a href="/">Logo</a>
+        <a href="/shop">Shop</a>
         <a href="/cart">Cart</a>
       </nav>
       <Directory />
