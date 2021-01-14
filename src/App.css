@@ -1,5 +1,4 @@
 body {
-  font-family: 'Open Sans Condensed', sans-serif;
   padding: 20px 60px;
   /*
     font-family: 'Lexend Deca', sans-serif;*/
@@ -8,4 +7,8 @@ body {
 a {
   text-decoration: none;
   color: #333;
+}
+
+* {
+  box-sizing: border-box;
 }
