@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 
 const HeaderStyles = styled.div`
   display: flex;
@@ -18,7 +20,7 @@ const HeaderStyles = styled.div`
     width: 70px;
     height: 100%;
   }
-  div:last-child {
+  .nav-right {
     /*width: 50%;*/
     height: 100%;
     .option {
@@ -33,7 +35,7 @@ const HeaderStyles = styled.div`
   }
 `;
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   return (
     <HeaderStyles>
       <div className="logo">
@@ -41,7 +43,7 @@ const Header = ({ currentUser }) => {
           <Logo />
         </Link>
       </div>
-      <div>
+      <div className="nav-right">
         <Link to="/shop" className="option">shop</Link>
         <Link to="/shop" className="option">contact</Link>
         {
@@ -52,13 +54,16 @@ const Header = ({ currentUser }) => {
             :
             <Link to="/signin" className="option">sign in</Link>
         }
+        <CartIcon />
       </div>
+      {!hidden && <CartDropdown />}
     </HeaderStyles>
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({user: { currentUser }, cart: { hidden }}) => ({
+  currentUser,
+  hidden
 })
 
 export default connect(mapStateToProps)(Header);
