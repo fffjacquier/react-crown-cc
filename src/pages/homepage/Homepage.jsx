@@ -6,17 +6,12 @@ const HomepageStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 0;
 `;
 
 const Homepage = () => {
   return (
     <HomepageStyles>
-      <nav>
-        <a href="/">Logo</a>
-        <a href="/shop">Shop</a>
-        <a href="/cart">Cart</a>
-      </nav>
       <Directory />
     </HomepageStyles>
   );
