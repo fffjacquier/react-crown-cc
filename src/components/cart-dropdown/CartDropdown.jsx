@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { connect } from "react-redux";
+import CartItem from "../cart-item/CartItem";
 import CustomButton from "../custom-button/CustomButton";
 
 const CartStyles = styled.div`
@@ -12,6 +14,7 @@ const CartStyles = styled.div`
   background-color: white;
   top: 80px;
   right: 60px;
+  z-index: 5;
 
   .items {
     display: flex;
@@ -24,9 +27,17 @@ const CartStyles = styled.div`
   }
 `;
 
-const CartDropdown = () => <CartStyles>
-  <div></div>
+const CartDropdown = ({ cartItems }) => <CartStyles>
+  <div className="items">
+    {cartItems.map(cartItem => (
+      <CartItem key={cartItem.id} item={cartItem} />
+    ))}
+  </div>
   <CustomButton type="submit"> Checkout </CustomButton>
 </CartStyles>;
 
-export default CartDropdown;
+const mapStateToProps = ({ cart: { cartItems }}) => ({
+  cartItems
+})
+
+export default connect(mapStateToProps)(CartDropdown);
