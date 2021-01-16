@@ -9,6 +9,10 @@ a {
   color: #333;
 }
 
+button {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }
