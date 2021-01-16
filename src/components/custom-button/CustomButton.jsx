@@ -13,6 +13,8 @@ const CustomButtonStyles = styled.button`
   letter-spacing: 0.5px;
   width: auto;
   min-width: 165px;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     background-color: white;
@@ -27,12 +29,23 @@ const CustomButtonStyles = styled.button`
       border: none;
     }
   }
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
 `;
 
-const CustomButton = ({ children, isGoogleSignin, ...otherProps }) => {
+const CustomButton = ({ children, isGoogleSignin, inverted, ...otherProps }) => {
   return (
     <CustomButtonStyles
-      className={`${isGoogleSignin ? 'google-sign-in': ''}`}
+      className={`${inverted ? 'inverted' : ''} ${isGoogleSignin ? 'google-sign-in' : ''}`}
       {...otherProps}>
       {children}
     </CustomButtonStyles>
