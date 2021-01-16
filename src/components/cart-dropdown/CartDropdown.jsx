@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import CartItem from "../cart-item/CartItem";
 import CustomButton from "../custom-button/CustomButton";
+import { selectCartItems } from "../../redux/cart/cart.selectors";
 
 const CartStyles = styled.div`
   position: absolute;
@@ -36,8 +37,8 @@ const CartDropdown = ({ cartItems }) => <CartStyles>
   <CustomButton type="submit"> Checkout </CustomButton>
 </CartStyles>;
 
-const mapStateToProps = ({ cart: { cartItems }}) => ({
-  cartItems
+const mapStateToProps = (state) => ({
+  cartItems: selectCartItems(state)
 })
 
 export default connect(mapStateToProps)(CartDropdown);
