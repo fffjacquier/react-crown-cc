@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import MenuItem from '../menu-item/MenuItem';
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
+import { selectDirectorySections } from "../../redux/directory/directory.selectors";
+import MenuItem from "../menu-item/MenuItem";
 
 const DirectoryMenuStyles = styled.div`
   width: 100%;
@@ -9,60 +12,16 @@ const DirectoryMenuStyles = styled.div`
   justify-content: space-between;
 `;
 
-class Directory extends Component {
-  constructor() {
-    super();
+const Directory = ({ sections }) => (
+  <DirectoryMenuStyles>
+    {sections.map(({ id, ...otherSectionProps }) => (
+      <MenuItem key={id} {...otherSectionProps} />
+    ))}
+  </DirectoryMenuStyles>
+);
 
-    this.state = {
-      sections: [
-        {
-          title: 'Hats',
-          imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-          id: 1,
-          linkUrl: 'hats'
-        },
-        {
-          title: 'Jackets',
-          imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-          id: 2,
-          linkUrl: ''
-        },
-        {
-          title: 'Sneakers',
-          imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-          id: 3,
-          linkUrl: ''
-        },
-        {
-          title: 'Womens',
-          imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-          size: 'large',
-          id: 4,
-          linkUrl: ''
-        },
-        {
-          title: 'Mens',
-          imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-          size: 'large',
-          id: 5,
-          linkUrl: ''
-        }
-      ]
-    }
-  }
+const mapStateToProps = state => createStructuredSelector({
+  sections: selectDirectorySections
+})
 
-  render() {
-    return (
-      <DirectoryMenuStyles>
-        {this.state.sections.map(({id, ...otherSectionProps}) => (
-          <MenuItem
-            key={id}
-            {...otherSectionProps}
-          />
-        ))}
-      </DirectoryMenuStyles>
-    );
-  }
-}
-
-export default Directory;
+export default connect(mapStateToProps)(Directory);
