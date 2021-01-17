@@ -49,7 +49,7 @@ const MenuItem = ({ title, imageUrl, size, match, history, linkUrl }) => (
       backgroundImage: `url(${imageUrl})`
     }}
     className={`${size}`}
-    onClick={() => history.push(`${match.url}${linkUrl}`)}
+    onClick={() => history.push(`${linkUrl}`)}
   >
     <div className="content">
       <h1>{title}</h1>

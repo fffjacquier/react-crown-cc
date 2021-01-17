@@ -8,7 +8,7 @@ const CollectionItemStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 22%;
+  width: 22vw;
   height: 350px;
   position: relative;
 
