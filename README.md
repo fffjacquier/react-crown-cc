@@ -1,7 +1,7 @@
-# Getting Started with Create React App
+# Learning React / Redux 2021
 
 Resulting URL for this project: https://crown-cc-live.herokuapp.com/
-![Image of crown-cc project](https://crown-cc-live.herokuapp.com/crown-cc-heroku.png)
+![Image of crown-cc project](https://crown-cc-live.herokuapp.com/crown-cc-heroku.jpg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
