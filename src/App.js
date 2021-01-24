@@ -11,6 +11,7 @@ import SignInSignUpPage from "./pages/signin-signup/SignInSignUp";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { selectCollectionForPreview } from "./redux/shop/shop.selectors";
 import Checkout from "./pages/checkout/Checkout";
 
 class App extends React.Component {
@@ -66,6 +67,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  collectionsArray: selectCollectionForPreview
 });
 
 const mapDispatchToProps = (dispatch) => ({
