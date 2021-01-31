@@ -16,23 +16,12 @@ const config = {
 firebase.initializeApp(config);
 // firebase.analytics();
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth
-  .signInWithPopup(provider)
-  .then((res) => ({/*console.log(res*/}))
-  .catch(e => ({/*do nothing*/}))
-
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   // check if document already exists
   const userRef = firestore.doc(`/users/${userAuth.uid}`)
   const snapshot = await userRef.get()
-  console.log(snapshot);
   /* return { exists: Boolean, id, metadata (SnapshotMetadata), ref...}*/
 
   if (!snapshot.exists) {
@@ -71,6 +60,25 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     return acc;
   }, {})
 };
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
+  .then((res) => ({/*console.log(res*/}))
+  .catch(e => ({/*do nothing*/}))
+
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth)
+    }, reject);
+  });
+}
 
 /*
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {

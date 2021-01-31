@@ -11,6 +11,7 @@ const InvertedCss = css`
     border: none;
   }
 `;
+
 const GoogleSigninCss = css`
   background-color: #4285f4;
   color: white;
@@ -19,6 +20,7 @@ const GoogleSigninCss = css`
     border: none;
   }
 `;
+
 const ButtonCss = css`
   color: white;
   background-color: black;
@@ -39,15 +41,15 @@ const getButtonStyles = props => {
   return props.inverted ? InvertedCss : ButtonCss;
 }
 
-export const CustomButtonContainerStyles = styled.div`
+export const CustomButtonContainerStyles = styled.button`
   cursor: pointer;
   text-transform: uppercase;
   font-size: 15px;
   padding: 0 35px;
   line-height: 50px;
   letter-spacing: 0.5px;
-  width: auto;
   min-width: 165px;
+  width: auto;
   display: flex;
   justify-content: center;
 
