@@ -30,7 +30,7 @@ app.listen(port, (error) => {
   console.log(`Server running on port ${port}`);
 });
 
-app.post("/payment", (req, res) => {
+app.post("/payment", async (req, res) => {
 
   // best to recalculate amount?
   const body = {
