@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const MenuItemStyles = styled.div`
   min-width: 30%;
@@ -43,19 +43,22 @@ const MenuItemStyles = styled.div`
 `;
 
 
-const MenuItem = ({ title, imageUrl, size, match, history, linkUrl }) => (
-  <MenuItemStyles
-    style={{
-      backgroundImage: `url(${imageUrl})`
-    }}
-    className={`${size}`}
-    onClick={() => history.push(`${linkUrl}`)}
-  >
-    <div className="content">
-      <h1>{title}</h1>
-      <span>SHOP NOW</span>
-    </div>
-  </MenuItemStyles>
-);
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+  let history = useHistory();
+  return (
+    <MenuItemStyles
+      style={{
+        backgroundImage: `url(${imageUrl})`
+      }}
+      className={`${size}`}
+      onClick={() => history.push(`${linkUrl}`)}
+    >
+      <div className="content">
+        <h1>{title}</h1>
+        <span>SHOP NOW</span>
+      </div>
+    </MenuItemStyles>
+  );
+}
 
-export default withRouter(MenuItem);
+export default (MenuItem);
