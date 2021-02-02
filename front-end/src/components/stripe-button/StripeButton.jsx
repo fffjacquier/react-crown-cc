@@ -12,12 +12,12 @@ const StripeCheckoutButton = ({ price }) => {
       method: 'post',
       data: {
         amount: priceForStripe,
-        token
+        token: token
       }
     }).then(response => {
       alert('Payment successful');
     }).catch(error => {
-      console.error('payment error:', JSON.parse(error));
+      console.error('payment error:', error);
       alert('There was an issue with your payment. Please make sure you provided the right informations.')
     });
   };
