@@ -30,7 +30,7 @@ app.listen(port, (error) => {
   console.log(`Server running on port ${port}`);
 });
 
-app.post("/payment", async (req, res) => {
+app.post("/payment", (req, res) => {
 
   // best to recalculate amount?
   const body = {
@@ -39,9 +39,9 @@ app.post("/payment", async (req, res) => {
     currency: 'eur'
   };
 
-  const charges = await stripe.charges.create(body, (stripeErr, stripeRes) => {
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
     if (stripeErr) {
-      req.status(500).send({ error: stripeErr });
+      res.status(500).send({ error: stripeErr });
     } else {
       res.status(200).send({ success: stripeRes });
     }
