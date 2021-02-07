@@ -25,6 +25,13 @@ const CollectionItemStyles = styled.div`
     position: absolute;
     top: 255px;
     display: none;
+
+    @media screen and (max-width: 800px) {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+    }
   }
 
   &:hover {
@@ -43,6 +50,18 @@ const CollectionItemStyles = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      .custom-button {
+        opacity: unset;
+      }
+    }
   }
 `;
 

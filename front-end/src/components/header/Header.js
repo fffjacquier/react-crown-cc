@@ -19,6 +19,12 @@ const HeaderStyles = styled.div`
   width: 100%;
   margin-bottom: 25px;
 
+  @media screen and (max-width: 800px) {
+    margin-bottom: 10px;
+    padding: 10px;
+    height: 60px;
+  }
+
   .nav-right {
     /*width: 50%;*/
     height: 100%;
@@ -29,11 +35,18 @@ const HeaderStyles = styled.div`
 const LogoContainerStyle = styled(Link)`
   width: 70px;
   height: 100%;
+  @media screen and (max-width: 800px) {
+    width: 50px;
+    padding: 0;
+  }
 `;
 
 const OptionContainerStyles = css`
   padding: 10px 15px;
   cursor: pointer;
+  @media screen and (max-width: 800px) {
+    /*width: 80%;*/
+  }
 `;
 const OptionLink = styled(Link)`
   ${OptionContainerStyles}

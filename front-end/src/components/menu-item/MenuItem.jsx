@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const MenuItemStyles = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: ${({ size }) => (size ? '380px' : '240px')};
   display: flex;
   flex: 1 1 auto;
   align-items: center;
@@ -40,6 +40,10 @@ const MenuItemStyles = styled.div`
       font-variant: small-caps;
     }
   }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+  }
 `;
 
 
@@ -50,7 +54,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
       style={{
         backgroundImage: `url(${imageUrl})`
       }}
-      className={`${size}`}
+      size={size}
       onClick={() => history.push(`${linkUrl}`)}
     >
       <div className="content">

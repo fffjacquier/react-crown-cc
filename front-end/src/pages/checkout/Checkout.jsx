@@ -44,6 +44,13 @@ const CheckoutStyles = styled.div`
   span {
     font-family: "Open Sans Condensed", sans-serif;
   }
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    .header {
+      width: 90%;
+    }
+  }
 `;
 
 const Checkout = ({ cartItems, cartTotal }) => (
