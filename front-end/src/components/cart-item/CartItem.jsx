@@ -34,4 +34,4 @@ const CartItem = ({ item: { imageUrl, price, name, quantity }}) => {
   );
 };
 
-export default Rect.memo(CartItem);
+export default React.memo(CartItem);
