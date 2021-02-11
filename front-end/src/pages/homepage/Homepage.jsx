@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import styled from "styled-components";
 import Directory from '../../components/directory/Directory';
 
@@ -12,7 +12,15 @@ const HomepageStyles = styled.div`
 const Homepage = () => {
   return (
     <HomepageStyles>
-      <Directory />
+      <Profiler id="Directory" onRender={(id, phase, actualDuration) => {
+        console.log({
+          id,
+          phase,
+          actualDuration
+        })
+      }}>
+        <Directory />
+      </Profiler>
     </HomepageStyles>
   );
 };
