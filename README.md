@@ -13,6 +13,7 @@ Resulting URL for this project: https://crown-cc-live.herokuapp.com/
 - styled-components
 - stripe
 - firebase
+- heroku
 
 ## Todos
 
